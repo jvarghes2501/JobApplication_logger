@@ -21,7 +21,7 @@ namespace Services
 
             if (locationAddRequest.LocationName == null) // Validate LocationName
             {
-                throw new ArgumentException("LocationName cannot be null", nameof(locationAddRequest.LocationName));
+                throw new ArgumentNullException("LocationName cannot be null", nameof(locationAddRequest.LocationName));
             }
 
             if (_locationDataStore.Where(loc => loc.LocationName == locationAddRequest.LocationName).Count() > 0) // Check for duplicate LocationName
