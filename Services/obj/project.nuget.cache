@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "Qg6Bpthka0k=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jesti\\OneDrive\\Desktop\\.NET_Projects\\JobApplicationLogger\\Services\\Services.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jesti\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.22\\microsoft.windowsdesktop.app.ref.8.0.22.nupkg.sha512",
+    "C:\\Users\\jesti\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.22\\microsoft.netcore.app.ref.8.0.22.nupkg.sha512",
+    "C:\\Users\\jesti\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.22\\microsoft.aspnetcore.app.ref.8.0.22.nupkg.sha512"
+  ],
+  "logs": []
+}
