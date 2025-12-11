@@ -8,9 +8,20 @@ namespace Services
     {
         private readonly List<Location> _locationDataStore; 
 
-        public LocationService()
+        public LocationService(bool init = true)
         {
             _locationDataStore = new List<Location>(); // Initialize the in-memory data store
+
+            if (init)
+            {
+                _locationDataStore.AddRange(new List<Location>() {
+                new Location() { LocationID = Guid.Parse("41BCA4C5-F4DB-4647-9142-42B06EF582F5"), LocationName = "New York"},
+                new Location() { LocationID = Guid.Parse("7566EE69-8250-4902-B378-76E6638D2E4A"), LocationName = "San Francisco"},
+                new Location() { LocationID = Guid.Parse("262EFDBD-0874-494B-BFAD-754D723B07E8"), LocationName = "Chicago"},
+                new Location() { LocationID = Guid.Parse("E9A724B2-E696-434B-827A-4C675C6B0AAA"), LocationName = "Seattle"},
+                new Location() { LocationID = Guid.Parse("FA38ACD7-19E9-4695-A5A7-6BAA24BB9EBF"), LocationName = "Austin"}
+                });
+            }
         }
         public LocationResponse AddLocation(LocationAddRequest? locationAddRequest)
         {

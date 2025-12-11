@@ -1,0 +1,37 @@
+﻿@model IEnumerable<CompanyResponse>
+@{
+    ViewBag.Title = "Company Index";
+}
+
+<h1>Company</h1>
+<table class="table w-100 mt">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Website
+            </th>
+            <th>
+                Position Name
+            </th>
+             <th>
+                Cover Letter ? (Y/N)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (CompanyResponse company in Model)
+        {
+            <tr>
+                <td>@company.Name</td>
+                <td>@company.Website</td>
+                <td>@company.PositionName</td>
+                <td>@(company.isCoverLetter == true ? "Y" : "N")</td>
+            </tr>
+        }
+        </tbody>
+
+ <table/>

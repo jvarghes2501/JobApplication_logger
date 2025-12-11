@@ -13,7 +13,7 @@ namespace CRUDTests
         public LocationServiceTests()
         {
             // Initialize the LocationService before each test
-            _locationService = new LocationService();
+            _locationService = new LocationService(false);
         }
 
         #region AddLocation

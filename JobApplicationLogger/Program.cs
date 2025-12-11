@@ -1,5 +1,12 @@
+using ServiceContracts;
+using Services;
+
 var builder = WebApplication.CreateBuilder(args);
-builder.Services .AddControllersWithViews();
+builder.Services.AddControllersWithViews();
+
+//add service into IoC container
+builder.Services.AddSingleton<ICompanyService, CompanyService>(); //singleton lifetime
+builder.Services.AddSingleton<ILocationService, LocationService>(); //singleton lifetime
 
 var app = builder.Build();
 

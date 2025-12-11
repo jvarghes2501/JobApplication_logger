@@ -7,12 +7,12 @@ namespace ServiceContracts.DTO
     {
         public Guid CompanyID { get; set;  }
         public string? Name { get; set; }
+
+        public string? PositionName { get; set; }
+
+        public bool? isCoverLetter { get; set; }
         public string? Website { get; set; }
         public Guid? LocationID { get; set; }
-        // Social / review links
-        public string? LinkedInUrl { get; set; }
-        public string? GlassdoorUrl { get; set; }
-        public string? IndeedUrl { get; set; }
         // Auditing
         public DateTime CreatedAt { get; set; }
 
@@ -31,10 +31,9 @@ namespace ServiceContracts.DTO
             return (this.CompanyID == company_to_check.CompanyID
                 && this.Name == company_to_check.Name
                 && this.Website == company_to_check.Website
+                && this.PositionName == company_to_check.PositionName
+                && this.isCoverLetter == company_to_check.isCoverLetter
                 && this.LocationID == company_to_check.LocationID
-                && this.LinkedInUrl == company_to_check.LinkedInUrl
-                && this.GlassdoorUrl == company_to_check.GlassdoorUrl
-                && this.IndeedUrl == company_to_check.IndeedUrl
                 && this.CreatedAt == company_to_check.CreatedAt);
         }
 
@@ -53,10 +52,9 @@ namespace ServiceContracts.DTO
                 CompanyID = company.CompanyID,
                 Name = company.Name,
                 Website = company.Website,
+                PositionName = company.PositionName,
+                isCoverLetter = company.isCoverLetter,
                 LocationID = company.LocationID,
-                LinkedInUrl = company.LinkedInUrl,
-                GlassdoorUrl = company.GlassdoorUrl,
-                IndeedUrl = company.IndeedUrl,
                 CreatedAt = company.CreatedAt
             };
         }

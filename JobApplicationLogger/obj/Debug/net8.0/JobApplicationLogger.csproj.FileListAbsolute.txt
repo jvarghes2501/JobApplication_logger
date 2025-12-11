@@ -28,3 +28,13 @@ C:\Users\jesti\OneDrive\Desktop\.NET_Projects\JobApplicationLogger\JobApplicatio
 C:\Users\jesti\OneDrive\Desktop\.NET_Projects\JobApplicationLogger\JobApplicationLogger\obj\Debug\net8.0\JobApplicationLogger.pdb
 C:\Users\jesti\OneDrive\Desktop\.NET_Projects\JobApplicationLogger\JobApplicationLogger\obj\Debug\net8.0\JobApplicationLogger.genruntimeconfig.cache
 C:\Users\jesti\OneDrive\Desktop\.NET_Projects\JobApplicationLogger\JobApplicationLogger\obj\Debug\net8.0\ref\JobApplicationLogger.dll
+C:\Users\jesti\OneDrive\Desktop\.NET_Projects\JobApplicationLogger\JobApplicationLogger\bin\Debug\net8.0\Entities.dll
+C:\Users\jesti\OneDrive\Desktop\.NET_Projects\JobApplicationLogger\JobApplicationLogger\bin\Debug\net8.0\ServiceContracts.dll
+C:\Users\jesti\OneDrive\Desktop\.NET_Projects\JobApplicationLogger\JobApplicationLogger\bin\Debug\net8.0\Services.dll
+C:\Users\jesti\OneDrive\Desktop\.NET_Projects\JobApplicationLogger\JobApplicationLogger\bin\Debug\net8.0\Entities.pdb
+C:\Users\jesti\OneDrive\Desktop\.NET_Projects\JobApplicationLogger\JobApplicationLogger\bin\Debug\net8.0\ServiceContracts.pdb
+C:\Users\jesti\OneDrive\Desktop\.NET_Projects\JobApplicationLogger\JobApplicationLogger\bin\Debug\net8.0\Services.pdb
+C:\Users\jesti\OneDrive\Desktop\.NET_Projects\JobApplicationLogger\JobApplicationLogger\obj\Debug\net8.0\JobApplicationLogger.csproj.AssemblyReference.cache
+C:\Users\jesti\OneDrive\Desktop\.NET_Projects\JobApplicationLogger\JobApplicationLogger\obj\Debug\net8.0\JobApplicationLogger.RazorAssemblyInfo.cache
+C:\Users\jesti\OneDrive\Desktop\.NET_Projects\JobApplicationLogger\JobApplicationLogger\obj\Debug\net8.0\JobApplicationLogger.RazorAssemblyInfo.cs
+C:\Users\jesti\OneDrive\Desktop\.NET_Projects\JobApplicationLogger\JobApplicationLogger\obj\Debug\net8.0\JobAppli.890CB660.Up2Date

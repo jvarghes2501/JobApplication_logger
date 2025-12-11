@@ -10,7 +10,7 @@ namespace CRUDTests
         public CompanyServiceTests()
         {
             // Initialize the CompanyService before each test
-            _companyService = new Services.CompanyService();
+            _companyService = new Services.CompanyService(false);
         }
 
         #region AddCompany

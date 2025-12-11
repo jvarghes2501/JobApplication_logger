@@ -16,12 +16,13 @@ namespace ServiceContracts.DTO
         [Required(ErrorMessage = "Name is required")]
         public string? Name { get; set; }
 
+        [Required(ErrorMessage = "positionName is required")]
+        public string? positionName { get; set; }
+
+        public bool? isCoverLetter { get; set; }
+
         public string? Website { get; set; }
         public Guid? LocationID { get; set; }
-        // Social / review links
-        public string? LinkedInUrl { get; set; }
-        public string? GlassdoorUrl { get; set; }
-        public string? IndeedUrl { get; set; }
         public DateTime CreatedAt { get; set; }
 
 
@@ -32,11 +33,10 @@ namespace ServiceContracts.DTO
             {
                 CompanyID = this.CompanyID,
                 Name = this.Name,
+                PositionName = this.positionName,
+                isCoverLetter = this.isCoverLetter,
                 Website = this.Website,
                 LocationID = this.LocationID,
-                LinkedInUrl = this.LinkedInUrl,
-                GlassdoorUrl = this.GlassdoorUrl,
-                IndeedUrl = this.IndeedUrl,
                 CreatedAt = this.CreatedAt
             };
         }
