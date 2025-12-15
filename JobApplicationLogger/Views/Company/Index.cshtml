@@ -3,19 +3,59 @@
     ViewBag.Title = "Company Index";
 }
 
+<form action="~/company/index" method="get">
 <h1>Company</h1>
+<div class="box flex">
+    <div class="flex-1">
+
+        <select class="form-input" name="searchBy">
+            @foreach (var option in ViewBag.SearchFields)
+            {
+                
+                if (option.Key.ToString() == ViewBag.currentSearchBy)
+                {
+                    <option value="@option.Key" selected="selected">@option.Value</option>
+                }
+                else
+                {
+                    <option value="@option.Key">@option.Value</option>
+                }
+                
+            })
+
+        </select>
+    </div>
+
+    <div class="flex-1">
+        <input type="search" id="search" class="form-input" placeholder="Search" name="searchString" value="@ViewBag.currentSearchString" />
+    </div>
+
+    <div class="flex-1">
+        <button class="button button-blue-back">Search</button>
+        <a href="~/company/index" class="link-hover">Clear all</a>
+    </div>
+</div>
 <table class="table w-100 mt">
     <thead>
         <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Website
-            </th>
-            <th>
-                Position Name
-            </th>
+            
+                @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                {
+                {"ColumnName", nameof(CompanyResponse.Name)},
+                {"DisplayName", "Company Name"}
+                })
+
+                @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                {
+                {"ColumnName", nameof(CompanyResponse.Website)},
+                {"DisplayName", "Website"}
+                })
+
+                @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                {
+                {"ColumnName", nameof(CompanyResponse.PositionName)},
+                {"DisplayName", "Position title"}
+                })
              <th>
                 Cover Letter ? (Y/N)
             </th>
@@ -26,12 +66,13 @@
         @foreach (CompanyResponse company in Model)
         {
             <tr>
-                <td>@company.Name</td>
-                <td>@company.Website</td>
-                <td>@company.PositionName</td>
-                <td>@(company.isCoverLetter == true ? "Y" : "N")</td>
+                <td style = "width:15%">@company.Name</td>
+                <td style = "width:20%">@company.Website</td>
+                <td style=  "width:20">@company.PositionName</td>
+                <td style = "width:9%">@(company.isCoverLetter == true ? "Y" : "N")</td>
             </tr>
         }
         </tbody>
 
  <table/>
+ </form>

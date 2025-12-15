@@ -116,11 +116,14 @@ namespace Services
 
             switch (searchBy)
             {
-                case "Name":
+                case nameof(CompanyResponse.Name):
                     filteredCompanies = allCompanies.Where(comp => comp.Name != null && comp.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase)).ToList();
                     break;
-                case "Website":
+                case nameof(CompanyResponse.Website):
                     filteredCompanies = allCompanies.Where(comp => comp.Website != null && comp.Website.Contains(searchString, StringComparison.OrdinalIgnoreCase)).ToList();
+                    break;
+                case nameof(CompanyResponse.PositionName):
+                    filteredCompanies = allCompanies.Where(comp => comp.PositionName != null && comp.PositionName.Contains(searchString, StringComparison.OrdinalIgnoreCase)).ToList();
                     break;
                 default:
                     filteredCompanies = allCompanies;

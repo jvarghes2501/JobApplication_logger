@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ServiceContracts;
 using ServiceContracts.DTO;
+using ServiceContracts.Enums;
 
 namespace JobApplicationLogger.Controllers
 {
@@ -15,10 +16,27 @@ namespace JobApplicationLogger.Controllers
 
         [Route("/company/index")]
         [Route("/")]
-        public IActionResult Index()
+        public IActionResult Index(string searchBy, string? searchString, string sortBy = nameof(CompanyResponse.Name), 
+            SortOrderOptions sortOrder = SortOrderOptions.Ascending)
         {
-            List<CompanyResponse> companies = _companyService.GetAllCompanies();
-            return View(companies);//views/company/Index.cshtml
+            List<CompanyResponse> companies = _companyService.GetFilteredCompanies(searchBy, searchString);
+
+            ViewBag.currentSearchBy = searchBy;
+            ViewBag.currentSearchString = searchString;
+
+            ViewBag.SearchFields = new Dictionary <string, string>()
+            {
+                {nameof(CompanyResponse.Name), "Name" },
+                {nameof(CompanyResponse.PositionName), "Position Name" },
+                {nameof(CompanyResponse.Website), "Website" },
+                {nameof(CompanyResponse.isCoverLetter), "Is Cover Letter" }
+                
+            };
+
+            List<CompanyResponse>sortedCompanies = _companyService.GetSortedCompanies(companies, sortBy, sortOrder);
+            ViewBag.currentSortBy = sortBy;
+            ViewBag.currentSortOrder = sortOrder.ToString();
+            return View(sortedCompanies);//views/company/Index.cshtml
         }
     }
 }
