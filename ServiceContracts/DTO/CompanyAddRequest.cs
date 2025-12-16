@@ -26,6 +26,8 @@ namespace ServiceContracts.DTO
             {
                 Name = this.Name,
                 Website = this.Website,
+                PositionName = this.positionName,
+                isCoverLetter = this.isCoverLetter,
                 LocationID = this.LocationID,
                 CreatedAt = this.CreatedAt
             };
