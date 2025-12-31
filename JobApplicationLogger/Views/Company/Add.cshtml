@@ -1,58 +1,68 @@
-﻿@{
+﻿@model CompanyAddRequest
+@{
     ViewBag.Title = "Add Company";
 }
 
-<a href="~/company/index" class="link-hover"> Back to job logger board</a>
+<a asp-controller="company" asp-action="index" class="link-hover"> Back to job logger board</a>
 <h2>Create record</h2>
 
 <div class= "w-50">
-    <form action="~/company/add" method="post">
+    <form asp-controller="company" asp-action="add" method="post">
 
         @*Company Name*@
         <div class="form-field flex">
             <div class="w-25">
-                <label for="Name" class="form-label pt">Company Name</label>
+                <label asp-for="Name" class="form-label pt">Company Name</label>
             </div>
             <div class="flex-1">
-                <input type="text" id="Name" name="Name" class="form-input"/>
+                <input asp-for="Name" type="text" class="form-input"/>
+                <span asp-validation-for="Name" class="text-red"></span>
             </div>
         </div>
 
-        @*Postion title*@
+      
+        @*Position Title*@
         <div class="form-field flex">
             <div class="w-25">
-                <label for="positionName" class="form-label pt">Positon Title</label>
+                <label asp-for="positionName" class="form-label pt">Position title</label>
             </div>
             <div class="flex-1">
-                <input type="text" id="positionName" name="positionName" class="form-input"/>
+                <input asp-for="positionName" type="text" class="form-input" />
+                <span asp-validation-for="positionName" class="text-red"></span>
             </div>
         </div>
 
         @*Cover Letter (Y/N)*@
         <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="isCoverLetter" class="form-label pt">Cover Letter ? (Y/N)</label>
+            </div>
             <div class="flex-1">
-                <label for="isCoverLetter" class="form-label pt">Cover Letter ? (Y/N)</label>
-                <input type="checkbox" id="isCoverLetter" name="isCoverLetter" value="true"/>
+                <input asp-for="isCoverLetter" type="text" class="form-input" />
+                <span asp-validation-for="isCoverLetter" class="text-red"></span>
             </div>
         </div>
-
+        
         @*Website*@
         <div class="form-field flex">
             <div class="flex-1">
-                <label for="Website" class="form-label pt">Website</label>
-                <input type="text" id="Website" name="Website" class="form-input"/>
+                <label asp-for="Website" class="form-label pt">Website</label>
+                <input asp-for="Website" type="text" class="form-input" />
+                <span asp-validation-for="Website" class="text-red"></span>
             </div>
         </div>
 
         @*Created at*@
         <div class="form-field flex">
             <div class="w-25">
-                <label for="CreatedAt" class="form-label pt">Created at</label>
+                <label asp-for="CreatedAt" class="form-label pt">Created at</label>
             </div>
             <div class="flex-1">
-                <input type="date" id="CreatedAt" name="CreatedAt" class="form-input"/>
+                <input asp-for="CreatedAt" type="date" class="form-input" />
+                <span asp-validation-for="CreatedAt" class="text-red"></span>
             </div>
         </div>
+
         @*Submit*@
         <div class="form-field flex">
             <div class="flex-1">

@@ -18,7 +18,7 @@ namespace ServiceContracts.DTO
         public bool ? isCoverLetter { get; set; }
         public string? Website { get; set; }
         public Guid? LocationID { get; set; }
-        DateTime CreatedAt { get; set;  } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set;  } = DateTime.UtcNow;
 
         public Company toCompany()
         {

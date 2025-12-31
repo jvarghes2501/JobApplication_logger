@@ -41,6 +41,25 @@ namespace ServiceContracts.DTO
         {
             return base.GetHashCode();
         }
+
+        public override string ToString()
+        {
+            return $"CompanyID: {CompanyID}, Name: {Name}, PositionName: {PositionName}, isCoverLetter: {isCoverLetter}, Website: {Website}, LocationID: {LocationID}, CreatedAt: {CreatedAt}";
+        }
+
+        public CompanyUpdateRequest ToCompanyUpdateRequest()
+        {
+            return new CompanyUpdateRequest()
+            {
+                CompanyID = this.CompanyID,
+                Name = this.Name,
+                Website = this.Website,
+                positionName = this.PositionName,
+                isCoverLetter = this.isCoverLetter,
+                LocationID = this.LocationID,
+                CreatedAt = this.CreatedAt
+            };
+        }
     }
 
     public static class CompanyResponseExtensions
