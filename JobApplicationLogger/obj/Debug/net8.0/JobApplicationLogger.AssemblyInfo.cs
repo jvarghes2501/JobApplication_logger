@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JobApplicationLogger")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+20121dc30fa6bd7958a77b124f110bbec454a5cb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0ebf36d930ff4fabb51999250d84d3a55e71ef13")]
 [assembly: System.Reflection.AssemblyProductAttribute("JobApplicationLogger")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JobApplicationLogger")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

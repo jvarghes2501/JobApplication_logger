@@ -12,7 +12,6 @@ namespace ServiceContracts.DTO
 
         public bool? isCoverLetter { get; set; }
         public string? Website { get; set; }
-        public Guid? LocationID { get; set; }
         // Auditing
         public DateTime CreatedAt { get; set; }
 
@@ -33,7 +32,6 @@ namespace ServiceContracts.DTO
                 && this.Website == company_to_check.Website
                 && this.PositionName == company_to_check.PositionName
                 && this.isCoverLetter == company_to_check.isCoverLetter
-                && this.LocationID == company_to_check.LocationID
                 && this.CreatedAt == company_to_check.CreatedAt);
         }
 
@@ -44,7 +42,7 @@ namespace ServiceContracts.DTO
 
         public override string ToString()
         {
-            return $"CompanyID: {CompanyID}, Name: {Name}, PositionName: {PositionName}, isCoverLetter: {isCoverLetter}, Website: {Website}, LocationID: {LocationID}, CreatedAt: {CreatedAt}";
+            return $"CompanyID: {CompanyID}, Name: {Name}, PositionName: {PositionName}, isCoverLetter: {isCoverLetter}, Website: {Website}, CreatedAt: {CreatedAt}";
         }
 
         public CompanyUpdateRequest ToCompanyUpdateRequest()
@@ -56,7 +54,6 @@ namespace ServiceContracts.DTO
                 Website = this.Website,
                 positionName = this.PositionName,
                 isCoverLetter = this.isCoverLetter,
-                LocationID = this.LocationID,
                 CreatedAt = this.CreatedAt
             };
         }
@@ -73,7 +70,6 @@ namespace ServiceContracts.DTO
                 Website = company.Website,
                 PositionName = company.PositionName,
                 isCoverLetter = company.isCoverLetter,
-                LocationID = company.LocationID,
                 CreatedAt = company.CreatedAt
             };
         }

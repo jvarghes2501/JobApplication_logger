@@ -22,7 +22,6 @@ namespace ServiceContracts.DTO
         public bool? isCoverLetter { get; set; }
 
         public string? Website { get; set; }
-        public Guid? LocationID { get; set; }
         public DateTime CreatedAt { get; set; }
 
 
@@ -36,7 +35,6 @@ namespace ServiceContracts.DTO
                 PositionName = this.positionName,
                 isCoverLetter = this.isCoverLetter,
                 Website = this.Website,
-                LocationID = this.LocationID,
                 CreatedAt = this.CreatedAt
             };
         }

@@ -171,7 +171,6 @@ namespace Services
             existingCompany.Website = companyUpdateRequest.Website;
             existingCompany.PositionName = companyUpdateRequest.positionName;
             existingCompany.isCoverLetter = companyUpdateRequest.isCoverLetter;
-            existingCompany.LocationID = companyUpdateRequest.LocationID;
             return existingCompany.ToCompanyResponse();
         }
     }

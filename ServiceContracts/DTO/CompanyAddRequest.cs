@@ -17,7 +17,6 @@ namespace ServiceContracts.DTO
         public string? positionName { get; set; }
         public bool ? isCoverLetter { get; set; }
         public string? Website { get; set; }
-        public Guid? LocationID { get; set; }
         public DateTime CreatedAt { get; set;  } = DateTime.UtcNow;
 
         public Company toCompany()
@@ -28,7 +27,6 @@ namespace ServiceContracts.DTO
                 Website = this.Website,
                 PositionName = this.positionName,
                 isCoverLetter = this.isCoverLetter,
-                LocationID = this.LocationID,
                 CreatedAt = this.CreatedAt
             };
         }
