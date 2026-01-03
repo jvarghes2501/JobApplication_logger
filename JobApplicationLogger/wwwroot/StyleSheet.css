@@ -353,13 +353,15 @@ a.link-hover:hover
     background-color: #e5e5e5;
 }
 
-.button
-{
-    padding: 8px 12px;
-    border: 2px solid #cacaca;
-    border-radius: 8px;
-    outline: 3px solid #ffffff;
-    font-size: 101%;
+.button {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 6px;
 }
 
 .button-blue-back
@@ -443,4 +445,132 @@ a.link-hover:hover
         display: inline-block;
         width: auto;
     }
+}
+
+/* Stronger overrides for Edit (blue) and Delete (red) buttons */
+button.button.button-edit {
+    background-color: #0d6efd; /* blue */
+    color: #ffffff;
+    border: 1px solid #0b5ed7;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.06s ease;
+}
+
+    button.button.button-edit:hover,
+    button.button.button-edit:focus {
+        background-color: #0b5ed7; /* slightly darker blue */
+        border-color: #0a58ca;
+        outline: none;
+        transform: translateY(-1px);
+    }
+
+button.button.button-danger {
+    background-color: #dc3545; /* red */
+    color: #ffffff;
+    border: 1px solid #c82333;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.06s ease;
+}
+
+    button.button.button-danger:hover,
+    button.button.button-danger:focus {
+        background-color: #c82333; /* slightly darker red */
+        border-color: #bd2130;
+        outline: none;
+        transform: translateY(-1px);
+    }
+
+/* keep inline forms inside table cell */
+.inline-form {
+    display: inline-block;
+    margin: 0 6px 0 0;
+    padding: 0;
+}
+
+/* Create record button (primary blue) */
+.button.button-create {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #0d6efd; /* base blue */
+    border: 1px solid #0b5ed7;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 120ms ease, transform 80ms ease;
+    vertical-align: middle;
+}
+
+    .button.button-create i {
+        margin-right: 6px;
+        font-size: 0.95em;
+    }
+
+    /* hover / focus state — slightly darker */
+    .button.button-create:hover,
+    .button.button-create:focus {
+        background-color: #0b5ed7; /* darker blue */
+        border-color: #094fbf;
+        transform: translateY(-1px);
+        outline: none;
+    }
+
+/* Add a subtle black outline to status badges; increases on hover */
+.status-badge {
+    /* outer stroke (keeps existing per-status border) */
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.85);
+    /* ensure outline sits above surrounding content */
+    position: relative;
+}
+
+/* stronger outline on hover/focus for affordance */
+.status-badge:hover,
+.status-badge:focus {
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.95), 0 4px 10px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+
+/* Colors per CompanyApplicationStatus (use enum names lower-cased) */
+
+
+.status-interviewing {
+    background: #fff6e6;
+    color: #d97706;
+    border: 1px solid #ffe6c2;
+}
+
+.status-offer {
+    background: #ecffd9;
+    color: #198754;
+    border: 1px solid #dff5cc;
+}
+
+.status-accepted {
+    background: #d1ffd9;
+    color: #0f5132;
+    border: 1px solid #cfeed0;
+}
+
+.status-rejected {
+    background: #ffecec;
+    color: #c82333;
+    border: 1px solid #ffd6d6;
+}
+
+.status-withdrawn {
+    background: #f3f4f6;
+    color: #6b7280;
+    border: 1px solid #e5e7eb;
+}
+
+
+/* Hover/active micro-lift */
+.status-badge:hover,
+.status-badge:focus {
+    transform: translateY(-2px);
 }

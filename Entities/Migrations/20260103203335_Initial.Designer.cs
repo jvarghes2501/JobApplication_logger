@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entities.Migrations
 {
     [DbContext(typeof(companyDbContext))]
-    [Migration("20260103020159_Initial")]
+    [Migration("20260103203335_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -42,11 +42,14 @@ namespace Entities.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<string>("Website")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<bool?>("isCoverLetter")
+                    b.Property<bool>("isCoverLetter")
                         .HasColumnType("bit");
 
                     b.HasKey("CompanyID");

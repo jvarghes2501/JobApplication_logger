@@ -15,9 +15,11 @@ namespace ServiceContracts.DTO
 
         [Required(ErrorMessage = "postionName is required")]
         public string? positionName { get; set; }
-        public bool ? isCoverLetter { get; set; }
+        public bool isCoverLetter { get; set; } = false; 
         public string? Website { get; set; }
         public DateTime CreatedAt { get; set;  } = DateTime.UtcNow;
+
+        public CompanyApplicationStatus Status { get; set; } = CompanyApplicationStatus.Unknown;
 
         public Company toCompany()
         {
@@ -27,7 +29,8 @@ namespace ServiceContracts.DTO
                 Website = this.Website,
                 PositionName = this.positionName,
                 isCoverLetter = this.isCoverLetter,
-                CreatedAt = this.CreatedAt
+                CreatedAt = this.CreatedAt,
+                Status = this.Status
             };
         }
 

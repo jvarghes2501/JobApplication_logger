@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Entities;
 using System.ComponentModel.DataAnnotations;
-using Entities;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ServiceContracts.DTO
 {
@@ -19,10 +14,13 @@ namespace ServiceContracts.DTO
         [Required(ErrorMessage = "positionName is required")]
         public string? positionName { get; set; }
 
-        public bool? isCoverLetter { get; set; }
+        public bool isCoverLetter { get; set; } = false;
 
         public string? Website { get; set; }
         public DateTime CreatedAt { get; set; }
+
+        public CompanyApplicationStatus Status { get; set; } = CompanyApplicationStatus.Unknown;
+
 
 
 
@@ -35,7 +33,8 @@ namespace ServiceContracts.DTO
                 PositionName = this.positionName,
                 isCoverLetter = this.isCoverLetter,
                 Website = this.Website,
-                CreatedAt = this.CreatedAt
+                CreatedAt = this.CreatedAt, 
+                Status = this.Status,
             };
         }
     }

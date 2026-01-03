@@ -3,64 +3,68 @@
     ViewBag.Title = "Company Index";
 }
 
-<form asp-controller = "company" asp-action= "index" method="get">
-<h1>Company</h1>
- <a asp-controller="company" asp-action="add">Create record</a>
+<form asp-controller="company" asp-action="index" method="get">
+    <h1>Company</h1>
+    @* <a asp-controller="company" asp-action="add">Create record</a> *@
+    <a asp-controller="company" asp-action="add" class="button button-create"><i class="fa fa-plus" aria-hidden="true"></i> Create record</a>
+    <div class="box flex">
+        <div class="flex-1">
 
-<div class="box flex">
-    <div class="flex-1">
-
-        <select class="form-input" name="searchBy">
-            @foreach (var option in ViewBag.SearchFields)
-            {
-                
-                if (option.Key.ToString() == ViewBag.currentSearchBy)
+            <select class="form-input" name="searchBy">
+                @foreach (var option in ViewBag.SearchFields)
                 {
-                    <option value="@option.Key" selected="selected">@option.Value</option>
+                    if (option.Key.ToString() == ViewBag.currentSearchBy)
+                    {
+                        <option value="@option.Key" selected="selected">@option.Value</option>
+                    }
+                    else
+                    {
+                        <option value="@option.Key">@option.Value</option>
+                    }
                 }
-                else
-                {
-                    <option value="@option.Key">@option.Value</option>
-                }
-                
-            })
+            </select>
+        </div>
 
-        </select>
-    </div>
+        <div class="flex-1">
+            <input type="search" id="search" class="form-input" placeholder="Search" name="searchString" value="@ViewBag.currentSearchString" />
+        </div>
 
-    <div class="flex-1">
-        <input type="search" id="search" class="form-input" placeholder="Search" name="searchString" value="@ViewBag.currentSearchString" />
+        <div class="flex-1">
+            <button class="button button-blue-back">Search</button>
+            <a asp-controller="company" asp-action="index" class="link-hover">Clear all</a>
+        </div>
     </div>
+</form>
 
-    <div class="flex-1">
-        <button class="button button-blue-back">Search</button>
-        <a asp-controller="company" asp-action="index" class="link-hover">Clear all</a>
-    </div>
-</div>
 <table class="table w-100 mt">
     <thead>
         <tr>
-            
-                @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
-                {
-                {"ColumnName", nameof(CompanyResponse.Name)},
-                {"DisplayName", "Company Name"}
-                })
+            @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+            {
+                { "ColumnName", nameof(CompanyResponse.Name)},
+                        { "DisplayName", "Company Name"}
+            })
 
-                @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
-                {
-                {"ColumnName", nameof(CompanyResponse.Website)},
-                {"DisplayName", "Website"}
-                })
+            @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                        {
+                { "ColumnName", nameof(CompanyResponse.Website)},
+                        { "DisplayName", "Website"}
+            })
 
-                @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
-                {
-                {"ColumnName", nameof(CompanyResponse.PositionName)},
-                {"DisplayName", "Position title"}
-                })
-             <th>
-                Cover Letter ? (Y/N)
-            </th>
+            @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                        {
+                { "ColumnName", nameof(CompanyResponse.PositionName)},
+                        { "DisplayName", "Position title"}
+            })
+
+            @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                        {
+                { "ColumnName", nameof(CompanyResponse.CreatedAt)},
+                        { "DisplayName", "Created at"}
+            })
+
+            <th>Cover Letter ? (Y/N)</th>
+            <th>Status</th>
             <th></th>
         </tr>
     </thead>
@@ -68,17 +72,27 @@
         @foreach (CompanyResponse company in Model)
         {
             <tr>
-                <td style = "width:15%">@company.Name</td>
-                <td style = "width:20%">@company.Website</td>
-                <td style=  "width:20">@company.PositionName</td>
-                <td style = "width:9%">@(company.isCoverLetter == true ? "Y" : "N")</td>
-                <td style="width:20%">
-                    <a asp-controller="company" asp-action="Edit" asp-route-companyID="@company.CompanyID">Edit</a>
-                    <a asp-controller="company" asp-action="Delete" asp-route-companyID="@company.CompanyID" >Delete</a>
+                <td style="width:15%">@company.Name</td>
+                <td style="width:20%">@company.Website</td>
+                <td style="width:20%">@company.PositionName</td>
+                <td style="width:20%">@company.CreatedAt</td>
+                <td style="width:9%">@(company.isCoverLetter == true ? "Y" : "N")</td>
+                <td style="width:12%">
+                    <span class="status-badge status-@(company.Status.ToString().ToLower())">@company.Status</span>
+                </td>
+                <td style="width:30%">
+                    <!-- Edit as GET (navigates to edit page) -->
+                    <form asp-controller="company" asp-action="Edit" asp-route-companyID="@company.CompanyID" method="get" class="inline-form">
+                        <button type="submit" class="button button-edit">Edit</button>
+                    </form>
+
+                    <!-- Delete as POST (safer) with confirmation -->
+                    <form asp-controller="company" asp-action="Delete" asp-route-companyID="@company.CompanyID" method="get" class="inline-form">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="button button-danger" >Delete</button>
+                    </form>
                 </td>
             </tr>
         }
-        </tbody>
-
- <table/>
- </form>
+    </tbody>
+</table>

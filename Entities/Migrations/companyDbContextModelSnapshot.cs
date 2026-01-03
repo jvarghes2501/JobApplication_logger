@@ -39,11 +39,14 @@ namespace Entities.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<string>("Website")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<bool?>("isCoverLetter")
+                    b.Property<bool>("isCoverLetter")
                         .HasColumnType("bit");
 
                     b.HasKey("CompanyID");

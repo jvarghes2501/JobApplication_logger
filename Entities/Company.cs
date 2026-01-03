@@ -17,10 +17,14 @@ namespace Entities
         public string? Website { get; set; }
 
         
-        public bool? isCoverLetter { get; set; }
+        public bool isCoverLetter { get; set; } = false;
 
 
         // Auditing
         public DateTime CreatedAt { get; set; }
+
+        public CompanyApplicationStatus Status { get; set; } = CompanyApplicationStatus.Unknown;
+
+
     }
 }

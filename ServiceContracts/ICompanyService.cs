@@ -9,39 +9,39 @@ namespace ServiceContracts
         /*
          * Adds a new company based on the provided CompanyAddRequest object to the data store.
          */
-        CompanyResponse AddCompany(CompanyAddRequest? companyAddRequest);
+        Task <CompanyResponse> AddCompany(CompanyAddRequest? companyAddRequest);
         
         /*
          * Retrieves all companies from the data store and returns them as a list of CompanyResponse objects.
          */
-        List<CompanyResponse> GetAllCompanies();
+        Task<List<CompanyResponse>> GetAllCompanies();
 
         /*
          * Retrieves a specific company by its unique identifier (companyId) from the data store.
          */
-        CompanyResponse? GetCompanyByCompanyId(Guid? companyId);
+        Task<CompanyResponse?> GetCompanyByCompanyId(Guid? companyId);
 
         /*
          * Retrieves companies from the data store based on filtering criteria.
          * The filtering is done based on the searchBy parameter (e.g., "Name", "Address") 
          * and the searchString parameter which contains the value to filter by.
          */
-        List<CompanyResponse> GetFilteredCompanies(string searchBy, string? searchString);
+        Task<List<CompanyResponse>> GetFilteredCompanies(string searchBy, string? searchString);
 
         /*
          * Retrieves companies from the data store sorted based on the sortBy parameter 
          * (e.g., "Name", "Address") and the sortOrder parameter which indicates ascending or descending order.
          */
-        List<CompanyResponse> GetSortedCompanies(List<CompanyResponse> allCompanies, string sortBy, SortOrderOptions sortOrder);
+        Task<List<CompanyResponse>> GetSortedCompanies(List<CompanyResponse> allCompanies, string sortBy, SortOrderOptions sortOrder);
 
         /*
          * Updates an existing company in the data store based on the provided CompanyUpdateRequest object.
          */
-        CompanyResponse UpdateCompany(CompanyUpdateRequest? companyUpdateRequest);
+        Task<CompanyResponse> UpdateCompany(CompanyUpdateRequest? companyUpdateRequest);
 
         /*
          * Deletes a specific company by its unique identifier (companyId) from the data store.
          */
-        bool DeleteCompanyByCompanyId(Guid? companyId);
+        Task<bool> DeleteCompanyByCompanyId(Guid? companyId);
     }
 }

@@ -6,8 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 //add service into IoC container
-builder.Services.AddSingleton<ICompanyService, CompanyService>(); //singleton lifetime
-builder.Services.AddSingleton<ILocationService, LocationService>(); //singleton lifetime
+builder.Services.AddScoped<ICompanyService, CompanyService>(); //singleton lifetime
 
 builder.Services.AddDbContext<companyDbContext>(options =>
 {

@@ -10,11 +10,12 @@ namespace ServiceContracts.DTO
 
         public string? PositionName { get; set; }
 
-        public bool? isCoverLetter { get; set; }
+        public bool isCoverLetter { get; set; } = false;
         public string? Website { get; set; }
         // Auditing
         public DateTime CreatedAt { get; set; }
 
+        public CompanyApplicationStatus Status { get; set; } = CompanyApplicationStatus.Unknown;
 
         public override bool Equals(object? obj)
         {
@@ -32,7 +33,8 @@ namespace ServiceContracts.DTO
                 && this.Website == company_to_check.Website
                 && this.PositionName == company_to_check.PositionName
                 && this.isCoverLetter == company_to_check.isCoverLetter
-                && this.CreatedAt == company_to_check.CreatedAt);
+                && this.CreatedAt == company_to_check.CreatedAt
+                && this.Status == company_to_check.Status);
         }
 
         public override int GetHashCode()
@@ -42,7 +44,7 @@ namespace ServiceContracts.DTO
 
         public override string ToString()
         {
-            return $"CompanyID: {CompanyID}, Name: {Name}, PositionName: {PositionName}, isCoverLetter: {isCoverLetter}, Website: {Website}, CreatedAt: {CreatedAt}";
+            return $"CompanyID: {CompanyID}, Name: {Name}, PositionName: {PositionName}, isCoverLetter: {isCoverLetter}, Website: {Website}, CreatedAt: {CreatedAt}, Status:{Status}";
         }
 
         public CompanyUpdateRequest ToCompanyUpdateRequest()
@@ -54,7 +56,8 @@ namespace ServiceContracts.DTO
                 Website = this.Website,
                 positionName = this.PositionName,
                 isCoverLetter = this.isCoverLetter,
-                CreatedAt = this.CreatedAt
+                CreatedAt = this.CreatedAt, 
+                Status = this.Status
             };
         }
     }
@@ -70,7 +73,8 @@ namespace ServiceContracts.DTO
                 Website = company.Website,
                 PositionName = company.PositionName,
                 isCoverLetter = company.isCoverLetter,
-                CreatedAt = company.CreatedAt
+                CreatedAt = company.CreatedAt, 
+                Status = company.Status
             };
         }
     }

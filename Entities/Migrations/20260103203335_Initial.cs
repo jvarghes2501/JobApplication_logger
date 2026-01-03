@@ -19,8 +19,9 @@ namespace Entities.Migrations
                     Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     PositionName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     Website = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    isCoverLetter = table.Column<bool>(type: "bit", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    isCoverLetter = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
