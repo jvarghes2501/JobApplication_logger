@@ -45,16 +45,16 @@ namespace JobApplicationLogger.Controllers
         [Route("[action]")]
         [HttpGet]
 
-        public async Task <IActionResult> Add()
+        public async Task<IActionResult> Add()
         {
-            
+
             List<CompanyResponse> allCompanies = await _companyService.GetAllCompanies();
             ViewBag.companies = allCompanies.Select(
                 temp => new SelectListItem()
                 {
                     Text = temp.Name,
                     Value = temp.CompanyID.ToString(),
-                }); 
+                });
             return View();//views/company/Add.cshtml
         }
 
@@ -63,7 +63,7 @@ namespace JobApplicationLogger.Controllers
 
         public async Task<IActionResult> Add(CompanyAddRequest companyAddRequest)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 List<CompanyResponse> allCompanies = await _companyService.GetAllCompanies();
                 ViewBag.companies = allCompanies.Select(
@@ -144,13 +144,23 @@ namespace JobApplicationLogger.Controllers
         public async Task<IActionResult> Delete(CompanyUpdateRequest companyUpdateRequest)
         {
             CompanyResponse? companyResponse = await _companyService.GetCompanyByCompanyId(companyUpdateRequest.CompanyID);
-            if ( companyResponse == null)
+            if (companyResponse == null)
             {
-                return RedirectToAction("index"); 
+                return RedirectToAction("index");
             }
             await _companyService.DeleteCompanyByCompanyId(companyUpdateRequest.CompanyID);
             return RedirectToAction("index");
         }
+
+        [Route("CompanyCSV")]
+        public async Task<IActionResult> CompanyCSV()
+        {
+            MemoryStream memoryStream = await _companyService.GetCompanyCSV();
+            memoryStream.Position = 0;
+            return File(memoryStream, "application/octet-stream", "companies.csv");
+        }
+
+        
     }
 }
 

@@ -574,3 +574,35 @@ button.button.button-danger {
 .status-badge:focus {
     transform: translateY(-2px);
 }
+
+/* CSV export button - visually aligned with .button.button-create */
+.button.button-csv {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #0b7285; /* teal-ish base */
+    border: 1px solid #095a67; /* slightly darker border */
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 120ms ease, transform 80ms ease, box-shadow 120ms ease;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+    .button.button-csv i {
+        margin-right: 8px;
+        font-size: 0.95em;
+    }
+
+    /* hover / focus — slightly darker shade and lift */
+    .button.button-csv:hover,
+    .button.button-csv:focus {
+        background-color: #095a67;
+        border-color: #074e57;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 14px rgba(9,90,103,0.12);
+        outline: none;
+    }
+

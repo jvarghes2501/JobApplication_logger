@@ -2,13 +2,14 @@
 using ServiceContracts.DTO;
 using ServiceContracts.Enums;
 using Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Services.Helpers;
 using Microsoft.EntityFrameworkCore;
+using CsvHelper.Configuration;
+using CsvHelper;
+using System.IO;
+using System.Globalization;
+using OfficeOpenXml;
+
 
 namespace Services
 {
@@ -160,5 +161,45 @@ namespace Services
             await _db.SaveChangesAsync(); // Save changes asynchronously
             return existingCompany.ToCompanyResponse();
         }
+
+        public async Task<MemoryStream> GetCompanyCSV()
+        {
+            MemoryStream memoryStream = new MemoryStream();
+            StreamWriter streamWriter = new StreamWriter(memoryStream);
+
+            CsvConfiguration csvConfiguration = new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                NewLine = Environment.NewLine,
+            };
+            CsvWriter csvWriter = new CsvWriter(streamWriter, csvConfiguration);
+
+            csvWriter.WriteField(nameof(CompanyResponse.Name));
+            csvWriter.WriteField(nameof(CompanyResponse.PositionName));
+            csvWriter.WriteField(nameof(CompanyResponse.isCoverLetter));
+            csvWriter.WriteField(nameof(CompanyResponse.Website));
+            csvWriter.WriteField(nameof(CompanyResponse.CreatedAt));
+            csvWriter.NextRecord();
+
+            List<CompanyResponse> allCompanies = await _db.Companies.Select(comp => comp.ToCompanyResponse())
+                .ToListAsync();
+
+            foreach (CompanyResponse company in allCompanies)
+            {
+                csvWriter.WriteField(company.Name);
+                csvWriter.WriteField(company.PositionName);
+                csvWriter.WriteField(company.isCoverLetter);
+                csvWriter.WriteField(company.Website);
+                csvWriter.WriteField(company.CreatedAt);
+                csvWriter.NextRecord();
+                csvWriter.Flush();
+            }
+            memoryStream.Position = 0;
+            return memoryStream;
+
+        }
+
+
+       
+
     }
 }

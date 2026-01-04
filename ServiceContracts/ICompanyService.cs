@@ -43,5 +43,11 @@ namespace ServiceContracts
          * Deletes a specific company by its unique identifier (companyId) from the data store.
          */
         Task<bool> DeleteCompanyByCompanyId(Guid? companyId);
+
+        /*
+         * returns the companies records in a csv format.
+         */
+        Task<MemoryStream>GetCompanyCSV();
+
     }
 }
